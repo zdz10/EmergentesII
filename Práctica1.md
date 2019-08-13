@@ -1,6 +1,12 @@
-**Práctica N° 1**
 
-**Sistemas Empresariales**
+#  Práctica N° 1
+## Sistemas Empresariales<br>
+
+**Carrera:**                Ingeniería de Sistemas<br>
+**Materia:**                Tecnologías Emergentes II<br>
+**Apellidos y Nombres:**    Condori Mamani Elias<br>
+**C.I.:**                   9179995 LP.<br>
+**Lugar y Fecha:**          El Alto, 13/08/19<br>
 
 1.  Explique que son los sistemas empresariales
 
@@ -79,7 +85,7 @@
 
     -   Se cierra la conexión.
 
-        ![](media/e9014ef9198f582a3bfccd8f7a54e455.png)
+        ![](/http.png)
 
         Por lo tanto, cuando se establece una conexión HTTP tenemos dos tipos de
         mensajes entre un cliente y un servidor: una petición por parte del cliente
@@ -90,41 +96,41 @@
 
 7.  Explique los elementos importantes de REQUEST en HTTP
 
-    >   Un simple mensaje de request de un cliente tiene los siguientes elementos:
+       Un simple mensaje de request de un cliente tiene los siguientes elementos:
 
-    >   Una línea de request para obtener el recurso, por ejemplo un request con el método GET /content/page1.html está requiriendo el recurso llamado /content/page1.html del servidor.
+       Una línea de request para obtener el recurso, por ejemplo un request con el método GET /content/page1.html está requiriendo el recurso llamado /content/page1.html del servidor.
 
-    >   Encabezados. Indican cosas como el lenguaje, codificación, tipo de datos (XML,JSON, etc). (Por ejemplo– Accept-Language: EN).
+       Encabezados. Indican cosas como el lenguaje, codificación, tipo de datos (XML,JSON, etc). (Por ejemplo– Accept-Language: EN).
 
-    >   Una línea vacía.
+       Una línea vacía.
 
-    >   Un cuerpo del mensaje que es opcional. Entre aplicaciones esta es la parte más importante. Por ejemplo, yo puedo enviar un XML o un JSON a otra máquina, y el servidor web interpretara la información que yo le mando.
+       Un cuerpo del mensaje que es opcional. Entre aplicaciones esta es la parte más importante. Por ejemplo, yo puedo enviar un XML o un JSON a otra máquina, y el servidor web interpretara la información que yo le mando.
 
-    >   Todas las líneas terminan con un retorno de carro y nueva línea. La línea vacía sólo contiene el retorno de carro y la nueva línea sin espacios.
+       Todas las líneas terminan con un retorno de carro y nueva línea. La línea vacía sólo contiene el retorno de carro y la nueva línea sin espacios.
 
 8.  Explique los elementos importantes de RESPONSE en HTTP
 
-    >   Un simple response del servidor web contiene lo siguiente:
+       Un simple response del servidor web contiene lo siguiente:
 
-    >   HTTP Status Code (Por ejemplo, HTTP/1.1 301 Movido Permanentemente,
-    >   significa que el recurso requerido fue movido permanentemente y redirigido a
-    >   otro recurso).
+       HTTP Status Code (Por ejemplo, HTTP/1.1 301 Movido Permanentemente,
+        significa que el recurso requerido fue movido permanentemente y redirigido a
+        otro recurso).
 
-    >   Encabezados. Igual que en el request, describen el contenido del response
-    >   (Example – Content-Type: html)
+       Encabezados. Igual que en el request, describen el contenido del response
+        (Example – Content-Type: html)
 
-    >   Una línea vacía.
+       Una línea vacía.
 
-    >   Un cuerpo de mensaje, que es opcional. Cuando trabajamos con aplicaciones,
-    >   aquí puede venir la respuesta en XML u otro formato. Cuando es una página
-    >   del navegador, contiene el código HTML que forma nuestra página.
+       Un cuerpo de mensaje, que es opcional. Cuando trabajamos con aplicaciones,
+        aquí puede venir la respuesta en XML u otro formato. Cuando es una página
+        del navegador, contiene el código HTML que forma nuestra página.
 
-    >   Todas las líneas terminan con un retorno de carro y nueva línea. La línea
-    >   vacía sólo contiene el retorno de carro y la nueva línea sin espacios.
+       Todas las líneas terminan con un retorno de carro y nueva línea. La línea
+        vacía sólo contiene el retorno de carro y la nueva línea sin espacios.
 
 9.  Describa con un gráfico la arquitectura Java EE
 
-    ![](media/1dd3b330d6ff040bed1200ce5c3e90ea.png)
+    ![](arq.png)
 
     >   Java EE proporciona una arquitectura multi-capa. La capa cliente puede estar constituida por aplicaciones Java de escritorio o navegadores HTML. Las capas proporcionadas por Java EE propiamente dicha son las capas Web (mediante las tecnologías Servlets, JSP y JSF) y las capas de Negocio (mediante tecnologías como EJB, JMS o Web Services). Por último, estas capas se comunican con una capa de datos (base de datos o aplicaciones y sistemas legacy).
 
@@ -132,23 +138,23 @@
 
      **CONTENEDORES JAVA EE**
 
-     >   Java EE Server: La porción de tiempo de ejecución de un producto Java EE, provee los contenedores web y de ejb.
+        Java EE Server: La porción de tiempo de ejecución de un producto Java EE, provee los contenedores web y de ejb.
 
-     >   Contenedor EJB: Maneja la ejecución de los enterprise beans.
+        Contenedor EJB: Maneja la ejecución de los enterprise beans.
 
-     >   Contenedor Web: Maneja la ejecución de las páginas web, servlets y algunos componentes ejb para las aplicaciones Java EE.
+        Contenedor Web: Maneja la ejecución de las páginas web, servlets y algunos componentes ejb para las aplicaciones Java EE.
 
-     >   Contenedor de aplicación cliente: Maneja la ejecución de la aplicación cliente no necesita un servidor de aplicaciones.
+        Contenedor de aplicación cliente: Maneja la ejecución de la aplicación cliente no necesita un servidor de aplicaciones.
 
-     >   Contenedor Applet: Maneja la ejecución de applets, no necesita servidor de aplicaciones, consiste en un browser y el plugin web de java.
+        Contenedor Applet: Maneja la ejecución de applets, no necesita servidor de aplicaciones, consiste en un browser y el plugin web de java.
 
      **COMPONENTES JAVA EE**
 
-     >   Una aplicación Java EE esta creada de componentes. 
+        Una aplicación Java EE esta creada de componentes. 
      
-     >   Un componente de Java EE es una unidad autónoma de software funcional que se ensambla en una aplicación Java EE con sus clases y archivos relacionados y que se comunica con otros componentes. Las especificaciones Java EE define los siguientes componentes.
+        Un componente de Java EE es una unidad autónoma de software funcional que se ensambla en una aplicación Java EE con sus clases y archivos relacionados y que se comunica con otros componentes. Las especificaciones Java EE define los siguientes componentes.
      
-     >  Las aplicaciones cliente y los applets son componentes que se ejecutan en el cliente. Java Servlet,JavaServer Faces y JavaServer Pages son componentes Web que se ejecutan en el servidor. Enterprise JavaBeans (EJB) son componentes de negocio que se ejecutan en el servidor. La diferencia entre los componentes de Java EE y las clases de Java estándar es que los componentes son ensamblados en una aplicación JEE y se verifica que estén bien creados y que cumplan con las especificaciones JEE. Se despliegan a la producción, donde se ejecutan y gestionan por el servidor Java EE.
+       Las aplicaciones cliente y los applets son componentes que se ejecutan en el cliente. Java Servlet,JavaServer Faces y JavaServer Pages son componentes Web que se ejecutan en el servidor. Enterprise JavaBeans (EJB) son componentes de negocio que se ejecutan en el servidor. La diferencia entre los componentes de Java EE y las clases de Java estándar es que los componentes son ensamblados en una aplicación JEE y se verifica que estén bien creados y que cumplan con las especificaciones JEE. Se despliegan a la producción, donde se ejecutan y gestionan por el servidor Java EE.
 
      **SERVICIOS DE JAVA EE**
 
