@@ -1,12 +1,30 @@
+# PRÁCTICA N° 1
+## SISTEMAS EMPRESARIALES
 
-#  Práctica N° 1
-## Sistemas Empresariales<br>
-
-**Carrera:**                Ingeniería de Sistemas<br>
-**Materia:**                Tecnologías Emergentes II<br>
-**Apellidos y Nombres:**    Condori Mamani Elias<br>
-**C.I.:**                   9179995 LP.<br>
-**Lugar y Fecha:**          El Alto, 13/08/19<br>
+<table border=1>
+    <tr>
+        <td class='col'>Carrera:</td>
+        <td>Ingeniería de Sistemas</td>
+        <td rowspan=4 align='center'><font size=10>C</font></td>
+    </tr>
+    <tr>
+        <td class='col'>Materia:</td>
+        <td>Tecnologías Emergentes II</td>
+    </tr>
+    <tr>
+        <td class='col'>Apellidos y Nombres:</td>
+        <td>Condori Mamani Elias</td>
+    </tr>
+    <tr>
+        <td class='col'>C.I.:</td>
+        <td>9179995 LP.</td>
+    </tr>
+    <tr>
+        <td class='col'>Lugar y Fecha:</td>
+        <td>El Alto, 13 de Agosto de 2019</td>
+        <td>Inicial Paterno</td>
+    </tr>
+</table>
 
 1.  Explique que son los sistemas empresariales
 
