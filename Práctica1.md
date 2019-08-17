@@ -196,135 +196,99 @@
      -   IBM WebSphere Application Server.
 
      -   Oracle Containers for Java EE 11.
+- GlassFish, un servidor de aplicaciones de código abierto de Sun.
+- Apache OpenEJB via Apache Geronimo.
+11. Investigue los métodos más utilizados de las clases HttpServlet, HttpServletRequest y HttpServletResponse, y para cada uno de los métodos muestre un ejemplo.
 
-     -   GlassFish, un servidor de aplicaciones de código abierto de Sun.
+**HttpServlet:**
+> **public abstract class HttpServlet extends GenericServlet**: Es la clase de la cual se debe extender para crear un servlet HTTP. De la clase que extiende obtiene los métodos ya definidos además de los cuales define:
 
-     -   Apache OpenEJB via Apache Geronimo.
+> **doGet(HttpServletRequest req, HttpServletResponse resp)**: Es el método llamado para procesar información que haya sido enviado con el método GET. Este método es llamado concurrentemente para cada cliente por lo que hay que estar atento por posibles variables compartidas que causen problemas.
 
-11.  Investigue los métodos más utilizados de las clases HttpServlet, HttpServletRequest y HttpServletResponse, y para cada uno de los métodos muestre un ejemplo.
+**Ejemplo:**
+```java
+import java.io.IOException;
+import java.io.PrintWriter; 
+import javax.servlet.ServletException; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+public class MiPrimerServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {        
+    private static final long serialVersionUID = 1L; 
+    public MiPrimerServlet() { 
+        super(); 
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+        PrintWriter out;
+        out = response.getWriter(); 
+        response.setContentType("text/html"); 
+        out.println("\<html\>"); 
+        out.println("\<head\>\<title\>Mi Primer Servlet \</title\>\</head\>"); 
+        out.println("\<body\>"); 
+        out.println("Este es mi Primer Servlet"); 
+        out.println("\</body\>\</html\>"); 
+    } 
+}
+```
+**doPost(HttpServletRequest req, HttpServletResponse resp)**: Ídem al anterior pero para el método POST, en general se implementa sólo un método y el otro lo referencia.
 
-     **HttpServlet:**
+**Ejemplo**:
+```java
+import java.io.IOException; 
+import java.io.PrintWriter; 
+import javax.servlet.ServletException; 
+import javax.servlet.http.HttpServletRequest; 
+import javax.servlet.http.HttpServletResponse; 
+public class MiPrimerServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet { 
+    private static final long serialVersionUID = 1L; 
+    public MiPrimerServlet() { 
+        super(); 
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+        PrintWriter out; 
+        out = response.getWriter();
+        response.setContentType("text/html");
+        out.println("\<html\>"); out.println("\<head\>\<title\>Mi Primer Servlet \</title\>\</head\>"); 
+        out.println("\<body\>"); 
+        out.println("Este es mi Primer Servlet"); 
+        out.println("\</body\>\</html\>");
+    }
+}
+```
 
-     >   **public abstract class HttpServlet extends GenericServlet**: Es la clase de la cual se debe extender para crear un servlet HTTP. De la clase que extiende obtiene los métodos ya definidos además de los cuales define:
+**HttpServletRequest:**
+> **public abstract interface HttpServletRequest extends ServletRequest:** Permite obtener del cliente la información que es dependiente del protocolo, en este caso HTTP. Entre sus métodos están:
 
-     **doGet(HttpServletRequest req, HttpServletResponse resp)**: Es el método llamado para procesar información que haya sido enviado con el método GET. Este método es llamado concurrentemente para cada cliente por lo que hay que estar atento por posibles variables compartidas que causen problemas.
+> **getHeader(String name):** Permite obtener el valor de los Headers de HTTP con que fue llamado el servlet.
 
-     **Ejemplo:**
+**Ejemplo:**
+```java
+String sIP = request.getHeader("X-FORWARDED-FOR");
+```
+> **getCookies():** Retorna un arreglo que contiene todas las *cookies* que el
+    cliente envía al servlet.
 
-     >  import java.io.IOException;
-     >
-     >  import java.io.PrintWriter; 
-     >
-     >   import javax.servlet.ServletException; 
-     >
-     >   import javax.servlet.http.HttpServletRequest; 
-     >
-     >   import javax.servlet.http.HttpServletResponse; 
-     >
-     >   public class MiPrimerServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {        
-     >> private static final long serialVersionUID = 1L; 
-     >>
-     >> public MiPrimerServlet() { 
-     >>>   super(); 
-     >>>
-     >> }
-     >> 
-     >> protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-     >>
-     >>>  PrintWriter out;
-     >>> 
-     >>>  out = response.getWriter(); 
-     >>>  response.setContentType("text/html"); 
-     >>>  out.println("\<html\>"); 
-     >>>  out.println("\<head\>\<title\>Mi Primer Servlet \</title\>\</head\>"); 
-     >>>  out.println("\<body\>"); 
-     >>>  out.println("Este es mi Primer Servlet"); 
-     >>>  out.println("\</body\>\</html\>"); 
-     >>>
-     >>  } 
-     >>
-     >} 
--   **doPost(HttpServletRequest req, HttpServletResponse resp)**: Ídem al anterior pero para el método POST, en general se implementa sólo un método y el otro lo referencia.
+> **getSession():** Retorna la sesión en la cual se encuentra el cliente.
 
-     **Ejemplo**:
+**Ejemplo:**
+```java
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
+    HttpSession session = request.getSession(); 
+    session.setMaxInactiveInterval(20\*60); 
+}
+```
 
-    >   import java.io.IOException; 
-    >
-    >   import java.io.PrintWriter; 
-    >
-    >   import javax.servlet.ServletException; 
-    >
-    >   import javax.servlet.http.HttpServletRequest; 
-    >
-    >   import javax.servlet.http.HttpServletResponse; 
-    >
-    >   public class MiPrimerServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet { 
-        >>  private static final long serialVersionUID = 1L; 
-        >>
-        >>  public MiPrimerServlet() { 
-            >>> super(); 
-            >>>
-        >>  }
-        >>
-        >>  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-            >>>
-            >>> PrintWriter out; 
-            >>>
-            >>> out = response.getWriter();
-            >>>
-            >>> response.setContentType("text/html");
-            >>>
-            >>> out.println("\<html\>"); out.println("\<head\>\<title\>Mi Primer Servlet \</title\>\</head\>"); 
-            >>>
-            >>> out.println("\<body\>"); 
-            >>>
-            >>> out.println("Este es mi Primer Servlet"); 
-            >>>
-            >>> out.println("\</body\>\</html\>");
-            >>> 
-            >>  }
-            >> 
-            > }
+**HttpServletResponse:**
 
-    **HttpServletRequest:**
+> **public abstract interface HttpServletResponse extends ServletResponse:** Permite enviar al cliente respuestas específicas del protocolo HTTP.
 
-    >   **public abstract interface HttpServletRequest extends ServletRequest:** Permite obtener del cliente la información que es dependiente del protocolo, en este caso HTTP. Entre sus métodos están:
+> **addCookie(Cookie cookie):** Para definir nuevas *cookies* en el cliente.
 
-    -   **getHeader(String name):** Permite obtener el valor de los Headers de HTTP
-        con que fue llamado el servlet.
+> **setHeader(String name, String value):** Para definir un header HTTP a
+    enviar al cliente.
 
-    **Ejemplo:**
+> **sendRedirect(String location):** Envía un mensaje al cliente para redireccionar la respuesta a la dirección señalada.
 
-        String sIP = request.getHeader("X-FORWARDED-FOR");
-
-
-    -   **getCookies():** Retorna un arreglo que contiene todas las *cookies* que el
-        cliente envía al servlet.
-
-    -   **getSession():** Retorna la sesión en la cual se encuentra el cliente.
-
-    **Ejemplo:**
-
-    >>  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-        >>>
-        >>>HttpSession session = request.getSession(); 
-        >>>
-        >>>session.setMaxInactiveInterval(20\*60); 
-        >>>
-    >>}
-
-    **HttpServletResponse:**
-
-    >   **public abstract interface HttpServletResponse extends ServletResponse:** Permite enviar al cliente respuestas específicas del protocolo HTTP.
-
-    -   **addCookie(Cookie cookie):** Para definir nuevas *cookies* en el cliente.
-
-    -   **setHeader(String name, String value):** Para definir un header HTTP a
-        enviar al cliente.
-
-    -   **sendRedirect(String location):** Envía un mensaje al cliente para
-        redireccionar la respuesta a la dirección señalada.
-
-    **Ejemplo:**
-
-        \<% response.sendRedirect("<http://www.google.com/>"); %\>
+**Ejemplo:**
+```java
+    \<% response.sendRedirect("<http://www.google.com/>"); %\>
+```
